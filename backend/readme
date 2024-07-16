@@ -1,0 +1,116 @@
+
+# Account Transfer Project
+
+This project is a simple web application for managing Account transfers between accounts, built with Django and Django REST Framework.
+
+## Table of Contents
+- [Installation](#installation)
+- [Running the Project](#running-the-project)
+- [Endpoints](#endpoints)
+- [Swagger Documentation](#swagger-documentation)
+- [Unit Tests](#unit-tests)
+
+## Installation
+
+1. **Clone the repository:**
+    ```bash
+    git clone <repository-url>
+    cd Account_transfer
+    ```
+
+2. **Create and activate a virtual environment:**
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+    ```
+
+3. **Install the requirements:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4. **Run database migrations:**
+    ```bash
+    python manage.py migrate
+    ```
+
+5. **Create a superuser:**
+    ```bash
+    python manage.py createsuperuser
+    ```
+
+6. **Run the development server:**
+    ```bash
+    python manage.py runserver
+    ```
+
+## Running the Project
+
+To run the project, ensure your virtual environment is activated and run:
+
+```bash
+python manage.py runserver
+```
+
+Open your web browser and navigate to `http://localhost:8000/`.
+
+## Endpoints
+
+### Account Endpoints
+
+- **List all accounts:**
+    - **URL:** `/api/accounts/`
+    - **Method:** `GET`
+    - **Description:** Retrieves a list of all accounts with pagination.
+
+- **Get account information:**
+    - **URL:** `/api/accounts/{id}/`
+    - **Method:** `GET`
+    - **Description:** Retrieves detailed information of a specific account by ID.
+
+- **Import accounts:**
+    - **URL:** `/api/accounts/import_accounts/`
+    - **Method:** `POST`
+    - **Description:** Imports accounts from a CSV file. The CSV file should have `name` and `balance` columns.
+
+- **Transfer Accounts:**
+    - **URL:** `/api/accounts/{id}/transfer/`
+    - **Method:** `POST`
+    - **Description:** Transfers Accounts from one account to another. The body should include `to_account` and `amount`.
+
+### Transaction Endpoints
+
+- **List all transactions:**
+    - **URL:** `/api/transactions/`
+    - **Method:** `GET`
+    - **Description:** Retrieves a list of all transactions with pagination.
+
+## Swagger Documentation
+
+Swagger documentation is available for the API.
+
+- **Swagger UI:** `http://localhost:8000/swagger/`
+- **ReDoc:** `http://localhost:8000/redoc/`
+
+## Unit Tests
+
+Unit tests are included for the main functionalities of the project. To run the tests, use the following command:
+
+```bash
+python manage.py test
+```
+
+### Example Test Cases
+
+- **Creating an account:**
+    - Test creating a new account and verifying the response status code is `201 Created`.
+
+- **Transferring Accounts:**
+    - Test transferring Accounts between two accounts and verifying the balances are updated correctly.
+
+- **Importing accounts from CSV:**
+    - Test importing accounts from a CSV file and verifying the accounts are created in the database.
+
+## License
+
+This project is licensed under the BSD License. See the LICENSE file for details.
